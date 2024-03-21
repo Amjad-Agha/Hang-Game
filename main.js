@@ -42,26 +42,6 @@ lettersAndSpace.forEach((ele) => {
   }
 })
 
-// end game 
-function endGame() {
-  let div = document.createElement("div");
-  div.className = "end-game"
-  let divText = `Game Over, The Word Is: ${randomPropertyValue}`
-  div.append(divText);
-  document.body.append(div);
-  letters.classList.add("finished");
-  
-}
-function winGame() {
-  let div = document.createElement("div");
-  div.className = "end-game";
-  let level = "";
-  wrongAttemps <= 2 ? level = "Advanced":wrongAttemps <= 5 ? level = "Intermediat" :  level = "Beginner";
-  let divText = `Congratulations, You Have ${wrongAttemps} failure, You Are ${level}`;
-  div.append(divText);
-  document.body.append(div);
-  letters.classList.add("finished");
-}
 // compare the clicked letters with chosen word letters
 let wrongAttemps = 0;
 let s = 0;
@@ -86,10 +66,31 @@ document.addEventListener("click",(ele) =>{
       document.querySelector(".hangman-draw").classList.add(`wrong-${wrongAttemps}`);
       document.getElementById("fail").play();
       if(wrongAttemps == 7) {
-        document.getElementById("lose").play();
         endGame()
       }
     }
   }
 
 });
+
+// end game 
+function endGame() {
+  let div = document.createElement("div");
+  div.className = "end-game"
+  let divText = `Game Over, The Word Is: ${randomPropertyValue}`
+  div.append(divText);
+  document.body.append(div);
+  letters.classList.add("finished");
+  
+}
+// win game
+function winGame() {
+  let div = document.createElement("div");
+  div.className = "end-game";
+  let level = "";
+  wrongAttemps <= 2 ? level = "Advanced":wrongAttemps <= 5 ? level = "Intermediat" :  level = "Beginner";
+  let divText = `Congratulations, You Have ${wrongAttemps} failure, You Are ${level}`;
+  div.append(divText);
+  document.body.append(div);
+  letters.classList.add("finished");
+}
